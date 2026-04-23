@@ -8,60 +8,9 @@
 <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
 </head>
-<body class="dashboard-page">
-    <!-- Sidebar -->
-    <aside class="sidebar" id="sidebar">
-        <div class="sidebar-header">
-            <i class="fas fa-university"></i>
-            <span>UniAttend</span>
-        </div>
-        <nav class="sidebar-nav">
-            <ul>
-                <li class="active">
-                    <a href="#dashboard">
-                        <i class="fas fa-tachometer-alt"></i>
-                        <span>Dashboard</span>
-                    </a>
-                </li>
-                <li>
-                    <a href="#absensi">
-                        <i class="fas fa-qrcode"></i>
-                        <span>Scan Absensi</span>
-                    </a>
-                </li>
-                <li>
-                    <a href="#jadwal">
-                        <i class="fas fa-calendar-alt"></i>
-                        <span>Jadwal Kuliah</span>
-                    </a>
-                </li>
-                <li>
-                    <a href="#riwayat">
-                        <i class="fas fa-history"></i>
-                        <span>Riwayat Kehadiran</span>
-                    </a>
-                </li>
-                <li>
-                    <a href="#izin">
-                        <i class="fas fa-file-alt"></i>
-                        <span>Pengajuan Izin</span>
-                    </a>
-                </li>
-                <li>
-                    <a href="#profil">
-                        <i class="fas fa-user"></i>
-                        <span>Profil</span>
-                    </a>
-                </li>
-            </ul>
-        </nav>
-        <div class="sidebar-footer">
-            <a href="/login" class="logout-btn">
-                <i class="fas fa-sign-out-alt"></i>
-                <span>Logout</span>
-            </a>
-        </div>
-    </aside>
+<body class="bg-light">
+
+@include('components.sidebar')
 
     <!-- Main Content -->
     <main class="main-content">
@@ -76,9 +25,9 @@
                     <span class="badge">2</span>
                 </button>
                 <div class="user-menu">
-                    <img src="https://ui-avatars.com/api/?name=Ahmad+Fauzi&background=f59e0b&color=fff" alt="Mahasiswa">
+                    <img src="https://ui-avatars.com/api/?name=Shafa+Alisha+Firdaus&background=f59e0b&color=fff" alt="Mahasiswa">
                     <div class="user-info">
-                        <span class="user-name">Ahmad Fauzi</span>
+                        <span class="user-name">Shafa Alisha Firdaus</span>
                         <span class="user-role">2021001001</span>
                     </div>
                 </div>
@@ -90,12 +39,12 @@
             <!-- Welcome Section -->
             <div class="welcome-section">
                 <div class="welcome-text">
-                    <h1>Halo, Ahmad! 👋</h1>
-                    <p>Senin, 15 Januari 2024 • Semester 5</p>
+                    <h1>Halo, Shafa! 👋</h1>
+                    <p>Senin, 26 April 2026 • Semester 4</p>
                 </div>
-                <button class="btn btn-primary btn-lg" onclick="openModal('scanModal'); startQRScanner();">
+                <a href="/scan-absensi" class="btn btn-primary btn-lg">
                     <i class="fas fa-qrcode"></i> Scan Absensi
-                </button>
+               </a>
             </div>
 
             <!-- Quick Stats -->
@@ -497,5 +446,28 @@
     </div>
 
     <script src="{{ asset('js/app.js') }}"></script>
+
+    <script>
+const canvas = document.getElementById('chart');
+
+if (canvas) {
+    const ctx = canvas.getContext('2d');
+
+    new Chart(ctx, {
+        type: 'pie',
+        data: {
+            labels: ['Hadir', 'Izin', 'Alpha'],
+            datasets: [{
+                data: @json(!empty($chart) ? array_values($chart) : [0,0,0]),
+                backgroundColor: [
+                    '#10b981',
+                    '#f59e0b',
+                    '#ef4444'
+                ]
+            }]
+        }
+    });
+}
+</script>
 </body>
 </html>

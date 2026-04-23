@@ -12,7 +12,7 @@
         <div class="nav-container">
             <a href="#" class="nav-logo">
                 <i class="fas fa-university"></i>
-                <span>UniAttend</span>
+                <span>Sistem Kehadiran</span>
             </a>
             <ul class="nav-menu">
                 <li><a href="#features">Fitur</a></li>

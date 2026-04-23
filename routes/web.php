@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AttendanceController;
+use App\Http\Controllers\IzinController;
 
 Route::get('/', function () {
     return view('index');
@@ -11,17 +12,34 @@ Route::get('/login', function () {
     return view('login');
 });
 
-Route::get('/dashboard', [AttendanceController::class, 'index']);
+// Dashboard masing-masing
+//Route::get('/mahasiswa', function () {
+   // return view('dashboard.mahasiswa');
+//});
 
-
-Route::get('/mahasiswa', function () {
-    return view('mahasiswa.dashboard');
-});
+Route::get('/mahasiswa', [AttendanceController::class, 'index']);
 
 Route::get('/dosen', function () {
-    return view('dosen.dashboard');
+    return view('dashboard.dosen');
 });
 
 Route::get('/admin', function () {
-    return view('admin.dashboard');
+    return view('dashboard.admin');
 });
+Route::get('/scan-absensi', function () {
+    return view('dashboard.scan');
+});
+Route::post('/absen', function () {
+    return response()->json([
+        'status' => 'success'
+    ]);
+});
+Route::get('/jadwal-kuliah', function () {
+    return view('dashboard.jadwal');
+});
+Route::get('/riwayat-kehadiran', function () {
+    return view('dashboard.riwayat');
+});
+Route::get('/riwayat-kehadiran', [AttendanceController::class, 'riwayat']);
+Route::get('/pengajuan-izin', [IzinController::class, 'create'])->name('izin.create');
+Route::post('/pengajuan-izin', [IzinController::class, 'store'])->name('izin.store');

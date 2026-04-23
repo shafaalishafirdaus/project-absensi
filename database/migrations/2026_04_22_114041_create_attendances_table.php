@@ -9,14 +9,25 @@ return new class extends Migration
     /**
      * Run the migrations.
      */
-   public function up()
+ public function up()
 {
     Schema::create('attendances', function (Blueprint $table) {
         $table->id();
-        $table->string('nama');
-        $table->string('nim');
-        $table->string('kelas');
-        $table->timestamp('waktu');
+
+        // data mahasiswa
+        $table->string('nama')->nullable();
+        $table->string('nim')->nullable();
+        $table->string('kelas')->nullable();
+
+        // data absensi
+        $table->string('matkul')->nullable();
+        $table->string('dosen')->nullable();
+        $table->timestamp('waktu')->nullable();
+        $table->string('status')->nullable(); // hadir / izin / alpha
+
+        // upload bukti
+        $table->string('bukti')->nullable();
+
         $table->timestamps();
     });
 }

@@ -9,15 +9,12 @@
 <body class="login-page">
     <div class="login-container">
         <div class="login-left">
-            <a href="/">
-                <i class="fas fa-arrow-left"></i> Kembali
-            </a>
             <div class="login-branding">
                 <i class="fas fa-university"></i>
-                <h1>UniAttend</h1>
+                <h1>Universitas Winaya Mukti</h1>
                 <p>Sistem Kehadiran Digital Kampus</p>
             </div>
-        </div>
+        </div>    
         <div class="login-right">
             <div class="login-form-container">
                 <h2>Selamat Datang</h2>
@@ -69,7 +66,9 @@
                         <i class="fas fa-sign-in-alt"></i> Masuk
                     </button>
                 </form>
-
+            <a href="/">
+                <i class="fas fa-arrow-left"></i> Kembali
+            </a>
                 <div class="login-help">
                     <p>Butuh bantuan? <a href="#">Hubungi Admin</a></p>
                 </div>
