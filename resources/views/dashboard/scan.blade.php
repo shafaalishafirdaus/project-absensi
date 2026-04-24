@@ -13,6 +13,9 @@
             font-size: 22px;
             margin-bottom: 20px;
         }
+        html {
+            padding: 20px
+        }
 
         /* CARD */
         .card {

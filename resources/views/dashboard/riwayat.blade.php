@@ -12,6 +12,9 @@
 
     <style>
         /* TITLE */
+        html {
+            padding: 20px
+        }
         h3 {
             font-size: 22px;
             margin-bottom: 20px;
@@ -194,12 +197,12 @@
                             </td>
 
                             <td>
-                                @if ($item->bukti)
-                                    <img src="{{ asset('storage/' . $item->bukti) }}" class="bukti-img">
-                                @else
-                                    -
-                                @endif
-                            </td>
+    @if ($item->bukti)
+        <span class="badge" style="background: #6366f1;">Lihat File</span>
+    @else
+        <span style="color: #ccc;">-</span>
+    @endif
+</td>
 
                         </tr>
                     @endforeach
