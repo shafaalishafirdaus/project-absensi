@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="id">
+
 <head>
     <meta charset="UTF-8">
     <title>Riwayat Kehadiran</title>
@@ -54,7 +55,7 @@
             border-radius: 12px;
             padding: 20px;
             margin-bottom: 20px;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
         }
 
         /* TABLE */
@@ -126,111 +127,113 @@
 
 <body class="dashboard-page">
 
-@include('components.sidebar')
+    @include('components.sidebar')
 
-<main class="main-content">
+    <main class="main-content">
 
-    <h3>📊 Riwayat Kehadiran</h3>
+        <h3>📊 Riwayat Kehadiran</h3>
 
-    <!-- FILTER -->
-    <form method="GET" class="filter-form">
+        <!-- FILTER -->
+        <form method="GET" class="filter-form">
 
-        <select name="bulan" class="form-control">
-            <option value="">Pilih Bulan</option>
-            <option value="1">Januari</option>
-            <option value="2">Februari</option>
-            <option value="3">Maret</option>
-        </select>
+            <select name="bulan" class="form-control">
+                <option value="">Pilih Bulan</option>
+                <option value="1">Januari</option>
+                <option value="2">Februari</option>
+                <option value="3">Maret</option>
+            </select>
 
-        <select name="minggu" class="form-control">
-            <option value="">Semua</option>
-            <option value="1">Minggu Ini</option>
-        </select>
+            <select name="minggu" class="form-control">
+                <option value="">Semua</option>
+                <option value="1">Minggu Ini</option>
+            </select>
 
-        <button class="btn btn-primary">Filter</button>
+            <button class="btn btn-primary">Filter</button>
 
-    </form>
+        </form>
 
-    <!-- CHART -->
-    <div class="card">
-        <div class="chart-box">
-            <canvas id="chart" height="200"></canvas>
+        <!-- CHART -->
+        <div class="card">
+            <div class="chart-box">
+                <canvas id="chart" height="200"></canvas>
+            </div>
         </div>
-    </div>
 
-    <!-- TABLE -->
-    <div class="card">
+        <!-- TABLE -->
+        <div class="card">
 
-        <table class="table">
+            <table class="table">
 
-            <thead>
-                <tr>
-                    <th>Tanggal</th>
-                    <th>Matkul</th>
-                    <th>Dosen</th>
-                    <th>Waktu</th>
-                    <th>Status</th>
-                    <th>Bukti</th>
-                </tr>
-            </thead>
+                <thead>
+                    <tr>
+                        <th>Tanggal</th>
+                        <th>Matkul</th>
+                        <th>Dosen</th>
+                        <th>Waktu</th>
+                        <th>Status</th>
+                        <th>Bukti</th>
+                    </tr>
+                </thead>
 
-            <tbody>
-                @foreach($data as $item)
-                <tr>
-                    <td>{{ $item->created_at->format('d M Y') }}</td>
-                    <td>{{ $item->matkul }}</td>
-                    <td>{{ $item->dosen }}</td>
-                    <td>{{ $item->waktu }}</td>
+                <tbody>
+                    @foreach ($data as $item)
+                        <tr>
+                            <td>{{ $item->created_at->format('d M Y') }}</td>
+                            <td>{{ $item->matkul }}</td>
+                            <td>{{ $item->dosen }}</td>
+                            <td>{{ $item->waktu }}</td>
 
-                    <td>
-                        <span class="badge 
+                            <td>
+                                <span
+                                    class="badge 
                             {{ $item->status == 'hadir' ? 'badge-hadir' : '' }}
                             {{ $item->status == 'izin' ? 'badge-izin' : '' }}
                             {{ $item->status == 'alpha' ? 'badge-alpha' : '' }}">
-                            {{ ucfirst($item->status) }}
-                        </span>
-                    </td>
+                                    {{ ucfirst($item->status) }}
+                                </span>
+                            </td>
 
-                    <td>
-                        @if($item->bukti)
-                            <img src="{{ asset('storage/' . $item->bukti) }}" class="bukti-img">
-                        @else
-                            -
-                        @endif
-                    </td>
+                            <td>
+                                @if ($item->bukti)
+                                    <img src="{{ asset('storage/' . $item->bukti) }}" class="bukti-img">
+                                @else
+                                    -
+                                @endif
+                            </td>
 
-                </tr>
-                @endforeach
-            </tbody>
+                        </tr>
+                    @endforeach
+                </tbody>
 
-        </table>
+            </table>
 
-    </div>
+        </div>
 
-</main>
+    </main>
 
-<!-- CHART SCRIPT -->
-<script>
-const canvas = document.getElementById('chart');
+    <!-- CHART SCRIPT -->
+    <script>
+        const canvas = document.getElementById('chart');
 
-if (canvas) {
-    const ctx = canvas.getContext('2d');
+        if (canvas) {
+            const ctx = canvas.getContext('2d');
 
-    new Chart(ctx, {
-        type: 'pie',
-        data: {
-            labels: ['Hadir', 'Izin', 'Alpha'],
-            datasets: [{
-                data: @json(!empty($chart) ? array_values($chart) : [0,0,0]),
-                backgroundColor: ['#10b981','#f59e0b','#ef4444']
-            }]
-        },
-        options: {
-            responsive: true
+            new Chart(ctx, {
+                type: 'pie',
+                data: {
+                    labels: ['Hadir', 'Izin', 'Alpha'],
+                    datasets: [{
+                        data: @json(!empty($chart) ? array_values($chart) : [0, 0, 0]),
+                        backgroundColor: ['#10b981', '#f59e0b', '#ef4444']
+                    }]
+                },
+                options: {
+                    responsive: true
+                }
+            });
         }
-    });
-}
-</script>
+    </script>
 
 </body>
+
 </html>

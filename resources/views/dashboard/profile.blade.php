@@ -1,147 +1,136 @@
 <!DOCTYPE html>
-<html lang="id">
+<html lang="en">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Profil Mahasiswa - UniAttend</title>
-
-    {{-- <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet"> --}}
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <title>User Profile</title>
+    {{-- <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap" rel="stylesheet"> --}}
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="{{ asset('css/style.css') }}">
-</head>
 
-<body class="dashboard-page">
+    <style>
+    :root {
+        --primary-color: #4f46e5;
+        --bg-body: #f8fafc; /* Warna background luar agar kontainer terlihat menonjol */
+        --bg-white: #ffffff;
+        --text-dark: #1e293b;
+        --border-color: #e2e8f0;
+        --sidebar-width: 260px; /* Sesuaikan dengan lebar sidebar Anda */
+    }
 
+    body {
+        margin: 0;
+        padding: 0;
+        background-color: var(--bg-body);
+        /* font-family: 'Inter', sans-serif; */
+    }
+
+    /* WRAPPER UTAMA */
+    .main-content {
+        margin-left: var(--sidebar-width); /* Memberi ruang agar tidak tertutup sidebar */
+        padding: 40px;
+        min-height: 100vh;
+        display: flex;
+        justify-content: center; /* Menjaga kontainer tetap di tengah area konten */
+        align-items: flex-start;
+    }
+
+    .profile-container {
+        width: 100%;
+        max-width: 1000px;
+        background: var(--bg-white);
+        border-radius: 12px;
+        padding: 40px;
+        box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+    }
+
+    /* CSS lainnya tetap sama seperti sebelumnya */
+    .profile-header-flat {
+        display: flex;
+        align-items: center;
+        gap: 30px;
+        padding-bottom: 30px;
+        border-bottom: 2px solid var(--border-color);
+    }
+
+    .profile-img-flat {
+        width: 120px;
+        height: 120px;
+        border-radius: 50%;
+        object-fit: cover;
+        border: 4px solid var(--primary-color);
+    }
+
+    .attendance-data {
+        margin-top: 30px;
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        gap: 20px;
+    }
+
+    .data-item {
+        padding: 20px;
+        background: #f8fafc;
+        border: 1px solid var(--border-color);
+        border-radius: 10px;
+        text-align: center;
+    }
+    
+    /* Responsive untuk layar kecil */
+    @media (max-width: 768px) {
+        .main-content {
+            margin-left: 0;
+            padding: 20px;
+        }
+        .profile-header-flat {
+            flex-direction: column;
+            text-align: center;
+        }
+    }
+</style>
+
+<body>
     @include('components.sidebar')
-    <!-- MAIN CONTENT -->
-    <main class="main-content container-fluid">
 
-    <!-- HEADER -->
-    <div class="d-flex justify-content-between align-items-center mb-4">
-        <h2 class="fw-bold">Profil Mahasiswa</h2>
-
-        <button class="btn btn-light position-relative">
-            <i class="fas fa-bell"></i>
-            <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
-                2
-            </span>
-        </button>
-    </div>
-
-    <!-- PROFILE CARD -->
-    <div class="card shadow-sm mb-4">
-        <div class="card-body d-flex justify-content-between align-items-center flex-wrap">
-
-            <div class="d-flex align-items-center gap-3">
-                <img src="https://ui-avatars.com/api/?name=Shafa+Alisha&background=4f46e5&color=fff"
-                    class="rounded-circle" width="80">
-
-                <div>
-                    <h4 class="mb-1">Shafa Alisha Firdaus</h4>
-                    <p class="mb-1 text-muted"><i class="fas fa-id-card"></i> 0101010101</p>
-                    <p class="mb-1 text-muted"><i class="fas fa-envelope"></i> shafa@student.univ.ac.id</p>
-                    <p class="mb-0 text-muted"><i class="fas fa-graduation-cap"></i> Teknik Informatika</p>
+    <div class="main-content">
+        <div class="profile-container">
+            <div class="profile-header-flat">
+                <img src="https://img.freepik.com/premium-vector/avatar-profile-icon-flat-style-female-user-profile-vector-illustration-isolated-background-women-profile-sign-business-concept_157943-38866.jpg?semt=ais_hybrid&w=740&q=80"
+                    alt="Profile Picture" class="profile-img-flat">
+                <div class="user-info">
+                    <h2>{{ $user->name ?? 'Shafa' }}</h2>
+                    <p>NIM: 2201010001 (Mahasiswa)</p>
+                    <p><i class="fa-solid fa-envelope"></i> {{ $user->email ?? 'shafa@gmail.com' }}</p>
+                    <a href="#" class="btn-edit-flat"><i class="fa-solid fa-user-gear"></i> Pengaturan Akun</a>
                 </div>
             </div>
 
-            <button class="btn btn-primary mt-3 mt-md-0">
-                <i class="fas fa-edit"></i> Edit Profil
-            </button>
-
-        </div>
-    </div>
-
-    <!-- GRID -->
-    <div class="row g-4">
-
-        <!-- BIODATA -->
-        <div class="col-md-6">
-            <div class="card shadow-sm">
-                <div class="card-header fw-bold">Biodata</div>
-                <div class="card-body">
-
-                    <p><strong>NIM:</strong> 0101010101</p>
-                    <p><strong>Nama:</strong> Shafa Alisha Firdaus</p>
-                    <p><strong>Jenis Kelamin:</strong> Perempuan</p>
-                    <p><strong>Alamat:</strong> Bandung</p>
-
+            <h3 style="margin-top: 40px; color: var(--text-dark);">Ringkasan Kehadiran Semester Ini</h3>
+            <div class="attendance-data">
+                <div class="data-item">
+                    <i class="fa-solid fa-calendar-check"></i>
+                    <div class="data-label">Hadir</div>
+                    <div class="data-value">18</div>
+                </div>
+                <div class="data-item" style="border-left: 4px solid #eab308;">
+                    <i class="fa-solid fa-clock"></i>
+                    <div class="data-label">Izin</div>
+                    <div class="data-value">2</div>
+                </div>
+                <div class="data-item" style="border-left: 4px solid #ef4444;">
+                    <i class="fa-solid fa-circle-xmark"></i>
+                    <div class="data-label">Alpa</div>
+                    <div class="data-value">0</div>
+                </div>
+                <div class="data-item" style="border-left: 4px solid #10b981;">
+                    <i class="fa-solid fa-percent"></i>
+                    <div class="data-label">Persentase</div>
+                    <div class="data-value">92%</div>
                 </div>
             </div>
         </div>
-
-        <!-- AKADEMIK -->
-        <div class="col-md-6">
-            <div class="card shadow-sm">
-                <div class="card-header fw-bold">Informasi Akademik</div>
-                <div class="card-body">
-
-                    <p><strong>Prodi:</strong> Teknik Informatika</p>
-                    <p><strong>Fakultas:</strong> Ilmu Komputer</p>
-                    <p><strong>Semester:</strong> 5</p>
-                    <span class="badge bg-success">Aktif</span>
-
-                </div>
-            </div>
-        </div>
-
     </div>
-
-    <!-- SUMMARY -->
-    <div class="card shadow-sm mt-4">
-        <div class="card-header fw-bold">Ringkasan Kehadiran</div>
-        <div class="card-body">
-
-            <div class="row text-center">
-
-                <div class="col-md-3">
-                    <div class="p-3 bg-success text-white rounded">
-                        <h3>45</h3>
-                        <p class="mb-0">Hadir</p>
-                    </div>
-                </div>
-
-                <div class="col-md-3">
-                    <div class="p-3 bg-warning text-white rounded">
-                        <h3>3</h3>
-                        <p class="mb-0">Izin</p>
-                    </div>
-                </div>
-
-                <div class="col-md-3">
-                    <div class="p-3 bg-danger text-white rounded">
-                        <h3>1</h3>
-                        <p class="mb-0">Alpha</p>
-                    </div>
-                </div>
-
-                <div class="col-md-3">
-                    <div class="p-3 bg-primary text-white rounded">
-                        <h3>92%</h3>
-                        <p class="mb-0">Persentase</p>
-                    </div>
-                </div>
-
-            </div>
-
-        </div>
-    </div>
-
-    <!-- ACTION -->
-    <div class="d-flex justify-content-between mt-4">
-
-        <a href="/mahasiswa" class="btn btn-outline-secondary">
-            <i class="fas fa-arrow-left"></i> Kembali
-        </a>
-
-        <button class="btn btn-danger">
-            <i class="fas fa-sign-out-alt"></i> Logout
-        </button>
-
-    </div>
-
-</main>
-
 </body>
 
 </html>
