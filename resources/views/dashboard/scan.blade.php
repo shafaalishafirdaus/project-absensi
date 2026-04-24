@@ -3,21 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <title>Scan Absensi</title>
-    <link rel="stylesheet" href="../css/style.css">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <script src="https://unpkg.com/html5-qrcode"></script>
+    <link rel="stylesheet" href="{{ asset('css/style.css') }}">
 
     <style>
-        body {
-            margin: 0;
-            background: #f4f6fb;
-        }
-
-        .main-content {
-            margin-left: 250px;
-            padding: 30px;
-        }
-
         h3 {
             font-size: 22px;
             margin-bottom: 20px;
@@ -67,11 +58,11 @@
     </style>
 </head>
 
-<body>
+<body class="dashboard-page">
 
 @include('components.sidebar')
 
-<div class="main-content">
+<main class="main-content">
 
     <h3>📷 Scan Absensi</h3>
 
@@ -85,7 +76,7 @@
 
     </div>
 
-</div>
+</main>
 
 <script>
 function onScanSuccess(decodedText) {

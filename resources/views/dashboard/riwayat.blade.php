@@ -5,21 +5,11 @@
     <title>Riwayat Kehadiran</title>
 
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-
-    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="{{ asset('css/style.css') }}">
 
     <style>
-        body {
-            margin: 0;
-            background: #f4f6fb;
-        }
-
-        .main-content {
-            margin-left: 250px;
-            padding: 30px;
-        }
-
         /* TITLE */
         h3 {
             font-size: 22px;
@@ -134,11 +124,11 @@
     </style>
 </head>
 
-<body>
+<body class="dashboard-page">
 
 @include('components.sidebar')
 
-<div class="main-content">
+<main class="main-content">
 
     <h3>📊 Riwayat Kehadiran</h3>
 
@@ -217,7 +207,7 @@
 
     </div>
 
-</div>
+</main>
 
 <!-- CHART SCRIPT -->
 <script>

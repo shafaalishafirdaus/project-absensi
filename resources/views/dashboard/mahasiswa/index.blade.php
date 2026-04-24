@@ -55,7 +55,7 @@
                             <i class="fas fa-percentage"></i>
                         </div>
                         <div class="stat-info">
-                            <h3>92%</h3>
+                            <h3>90%</h3>
                             <p>Total Kehadiran</p>
                         </div>
                     </div>

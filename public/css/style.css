@@ -809,7 +809,7 @@ input, textarea, select {
    Dashboard Layout
 =================================== */
 .dashboard-page {
-    display: flex;
+    display: block;
     min-height: 100vh;
 }
 
@@ -818,6 +818,8 @@ input, textarea, select {
     background: var(--gray-900);
     color: var(--white);
     position: fixed;
+    top: 0;
+    left: 0;
     height: 100vh;
     display: flex;
     flex-direction: column;
@@ -911,9 +913,18 @@ input, textarea, select {
 
 /* Main Content */
 .main-content {
-    flex: 1;
     margin-left: var(--sidebar-width);
     transition: var(--transition);
+    min-height: 100vh;
+    display: block;
+}
+
+.main-content.container-fluid {
+    padding-left: 24px !important;
+    padding-right: 24px !important;
+    padding-top: 24px !important;
+    padding-bottom: 24px !important;
+    max-width: 100% !important;
 }
 
 .dashboard-header {
