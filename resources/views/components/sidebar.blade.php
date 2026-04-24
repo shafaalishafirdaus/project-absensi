@@ -34,19 +34,20 @@
                </a>
            </li>
 
-           <li>
-             <a href="{{ route('izin.create') }}">
-               <i class="fas fa-file-signature"></i>
-               <span>Pengajuan Izin</span>
-             </a>
-          </li>
-
-            <li>
-                <a href="#">
-                    <i class="fas fa-user"></i>
-                    Profil
+           <li class="{{ request()->is('pengajuan-izin') ? 'active' : '' }}">
+               <a href="/pengajuan-izin">
+                   <i class="fas fa-file-signature"></i>
+                   <span>Pengajuan Izin</span>
                 </a>
             </li>
+            
+            <li class="{{ request()->is('profile') ? 'active' : '' }}">
+                <a href="/profile">
+                  <i class="fas fa-user"></i>
+                   Profile
+                </a>
+            </li>
+
         </ul>
     </nav>
 

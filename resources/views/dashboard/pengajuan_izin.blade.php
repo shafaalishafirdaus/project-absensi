@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="id">
-<head>
+{{-- <head>
     <meta charset="UTF-8">
     <title>Pengajuan Izin</title>
 
@@ -15,7 +15,7 @@
             overflow-x: hidden;
         }
 
-        /* SIDEBAR */
+        SIDEBAR
         .sidebar {
             width: 250px;
             height: 100vh;
@@ -73,24 +73,105 @@
             text-decoration: none;
         }
 
-        /* CONTENT */
+       
+    </style>
+</head> --}}
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Profil Mahasiswa - UniAttend</title>
+
+    <link rel="stylesheet" href="../css/style.css">
+    <!-- Font Awesome -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <style>
+        body {
+            margin: 0;
+            background: #f4f6fb;
+        }
+
+        /* SIDEBAR */
         .main-content {
             margin-left: 250px;
             padding: 30px;
         }
 
+        /* PAGE TITLE */
+        .page-title {
+            font-size: 22px;
+            font-weight: bold;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        /* CARD */
         .card {
+            background: white;
+            border-radius: 12px;
+            padding: 25px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+        }
+
+        /* FORM */
+        .form-group {
+            margin-bottom: 15px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 6px;
+            font-weight: 600;
+            color: #333;
+        }
+
+        .form-control {
+            width: 100%;
+            padding: 10px 12px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            outline: none;
+            transition: 0.2s;
+        }
+
+        .form-control:focus {
+            border-color: #3b82f6;
+            box-shadow: 0 0 0 2px rgba(59,130,246,0.2);
+        }
+
+        textarea.form-control {
+            resize: none;
+        }
+
+        /* BUTTON */
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 10px 16px;
             border: none;
-            border-radius: 12px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: 600;
         }
 
-        .card-body {
-            padding: 30px;
+        .btn-primary {
+            background: #3b82f6;
+            color: white;
         }
 
-        #reader {
-            border-radius: 12px;
-            overflow: hidden;
+        .btn-primary:hover {
+            background: #2563eb;
+        }
+
+        /* RESPONSIVE */
+        @media (max-width: 768px) {
+            .main-content {
+                margin-left: 0;
+                padding: 20px;
+            }
         }
     </style>
 </head>

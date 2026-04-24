@@ -40,6 +40,12 @@ Route::get('/jadwal-kuliah', function () {
 Route::get('/riwayat-kehadiran', function () {
     return view('dashboard.riwayat');
 });
+Route::get('/profile', function () {
+    return view('dashboard.profile');
+});
+Route::get('/pengajuan-izin', function () {
+    return view('dashboard.pengajuan_izin');
+});
 Route::get('/riwayat-kehadiran', [AttendanceController::class, 'riwayat']);
 Route::get('/pengajuan-izin', [IzinController::class, 'create'])->name('izin.create');
 Route::post('/pengajuan-izin', [IzinController::class, 'store'])->name('izin.store');
