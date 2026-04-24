@@ -68,7 +68,7 @@
         <ul>
             @if(Session::get('role') == 'mahasiswa')
                 <li class="{{ request()->is('mahasiswa') ? 'active' : '' }}">
-                    <a href="/dashboard-mahasiswa"><i class="fas fa-home"></i>Beranda Mahasiswa</a>
+                    <a href="/mahasiswa"><i class="fas fa-home"></i>Beranda Mahasiswa</a>
                 </li>
                 <li class="{{ request()->is('scan-absensi') ? 'active' : '' }}">
                     <a href="/scan-absensi"><i class="fas fa-qrcode"></i>Scan Absensi</a>
