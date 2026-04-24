@@ -4,189 +4,222 @@
     <meta charset="UTF-8">
     <title>Riwayat Kehadiran</title>
 
-    <!-- Bootstrap -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-
-    <!-- Font Awesome (biar icon jalan) -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
-
-    <!-- Chart.js -->
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
-   <style>
+    <link rel="stylesheet" href="../css/style.css">
+
+    <style>
         body {
-            overflow-x: hidden;
+            margin: 0;
+            background: #f4f6fb;
         }
 
-        /* SIDEBAR */
-        .sidebar {
-            width: 250px;
-            height: 100vh;
-            background: linear-gradient(180deg, #0d6efd, #0a58ca);
-            color: white;
-            position: fixed;
-        }
-
-        .sidebar-header {
-            padding: 20px;
-            font-size: 20px;
-            font-weight: bold;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-
-        .sidebar-nav ul {
-            list-style: none;
-            padding: 0;
-        }
-
-        .sidebar-nav li {
-            margin: 5px 0;
-        }
-
-        .sidebar-nav a {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            padding: 12px 20px;
-            color: white;
-            text-decoration: none;
-            transition: 0.3s;
-        }
-
-        .sidebar-nav a:hover,
-        .sidebar-nav .active a {
-            background: rgba(255,255,255,0.2);
-            border-radius: 8px;
-        }
-
-        .sidebar-footer {
-            position: absolute;
-            bottom: 20px;
-            width: 100%;
-            padding: 0 20px;
-        }
-
-        .logout-btn {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            color: white;
-            text-decoration: none;
-        }
-
-        /* CONTENT */
         .main-content {
             margin-left: 250px;
             padding: 30px;
         }
 
-        .card {
+        /* TITLE */
+        h3 {
+            font-size: 22px;
+            margin-bottom: 20px;
+        }
+
+        /* FILTER */
+        .filter-form {
+            display: flex;
+            gap: 15px;
+            margin-bottom: 20px;
+            flex-wrap: wrap;
+        }
+
+        .form-control {
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            min-width: 180px;
+        }
+
+        .btn {
+            padding: 10px 16px;
             border: none;
-            border-radius: 12px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: 600;
         }
 
-        .card-body {
-            padding: 30px;
+        .btn-primary {
+            background: #3b82f6;
+            color: white;
         }
 
-        #reader {
+        .btn-primary:hover {
+            background: #2563eb;
+        }
+
+        /* CARD */
+        .card {
+            background: white;
             border-radius: 12px;
-            overflow: hidden;
+            padding: 20px;
+            margin-bottom: 20px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+        }
+
+        /* TABLE */
+        .table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        .table th,
+        .table td {
+            padding: 12px;
+            text-align: left;
+            border-bottom: 1px solid #eee;
+        }
+
+        .table th {
+            background: #f8fafc;
+        }
+
+        .table tr:hover {
+            background: #f1f5f9;
+        }
+
+        /* BADGE */
+        .badge {
+            padding: 5px 10px;
+            border-radius: 8px;
+            font-size: 12px;
+            color: white;
+        }
+
+        .badge-hadir {
+            background: #10b981;
+        }
+
+        .badge-izin {
+            background: #f59e0b;
+        }
+
+        .badge-alpha {
+            background: #ef4444;
+        }
+
+        /* CHART */
+        .chart-box {
+            max-width: 400px;
+            margin: auto;
+        }
+
+        /* IMAGE */
+        .bukti-img {
+            width: 60px;
+            border-radius: 8px;
+        }
+
+        /* RESPONSIVE */
+        @media (max-width: 768px) {
+            .main-content {
+                margin-left: 0;
+                padding: 15px;
+            }
+
+            .filter-form {
+                flex-direction: column;
+            }
         }
     </style>
-    
 </head>
 
-<body class="bg-light">
+<body>
 
 @include('components.sidebar')
 
 <div class="main-content">
 
-    <h3 class="mb-4 fw-bold">📊 Riwayat Kehadiran</h3>
+    <h3>📊 Riwayat Kehadiran</h3>
 
     <!-- FILTER -->
-    <form method="GET" class="row mb-4">
-        <div class="col-md-3">
-            <select name="bulan" class="form-control">
-                <option value="">Pilih Bulan</option>
-                <option value="1">Januari</option>
-                <option value="2">Februari</option>
-                <option value="3">Maret</option>
-            </select>
-        </div>
+    <form method="GET" class="filter-form">
 
-        <div class="col-md-3">
-            <select name="minggu" class="form-control">
-                <option value="">Semua</option>
-                <option value="1">Minggu Ini</option>
-            </select>
-        </div>
+        <select name="bulan" class="form-control">
+            <option value="">Pilih Bulan</option>
+            <option value="1">Januari</option>
+            <option value="2">Februari</option>
+            <option value="3">Maret</option>
+        </select>
 
-        <div class="col-md-2">
-            <button class="btn btn-primary">Filter</button>
-        </div>
+        <select name="minggu" class="form-control">
+            <option value="">Semua</option>
+            <option value="1">Minggu Ini</option>
+        </select>
+
+        <button class="btn btn-primary">Filter</button>
+
     </form>
 
     <!-- CHART -->
-    <div class="card mb-4">
-        <div class="card-body">
-            <div style="max-width: 400px; margin: auto;">
-    <canvas id="chart" height="200"></canvas>
-    </div>
+    <div class="card">
+        <div class="chart-box">
+            <canvas id="chart" height="200"></canvas>
         </div>
     </div>
 
     <!-- TABLE -->
     <div class="card">
-        <div class="card-body">
-            <table class="table table-hover">
 
-                <thead>
-                    <tr>
-                        <th>Tanggal</th>
-                        <th>Matkul</th>
-                        <th>Dosen</th>
-                        <th>Waktu</th>
-                        <th>Status</th>
-                        <th>Bukti</th>
-                    </tr>
-                </thead>
+        <table class="table">
 
-                <tbody>
-                    @foreach($data as $item)
-                    <tr>
-                        <td>{{ $item->created_at->format('d M Y') }}</td>
-                        <td>{{ $item->matkul }}</td>
-                        <td>{{ $item->dosen }}</td>
-                        <td>{{ $item->waktu }}</td>
-                        <td>
-                            <span class="badge 
-                                {{ $item->status == 'hadir' ? 'badge-hadir' : '' }}
-                                {{ $item->status == 'izin' ? 'badge-izin' : '' }}
-                                {{ $item->status == 'alpha' ? 'badge-alpha' : '' }}">
-                                {{ ucfirst($item->status) }}
-                            </span>
-                        </td>
-                        <td>
-    @if($item->bukti)
-        <img src="{{ asset('storage/' . $item->bukti) }}" width="60" style="border-radius:8px;">
-    @else
-        -
-    @endif
-                       </td>
-                    </tr>
-                    @endforeach
-                </tbody>
+            <thead>
+                <tr>
+                    <th>Tanggal</th>
+                    <th>Matkul</th>
+                    <th>Dosen</th>
+                    <th>Waktu</th>
+                    <th>Status</th>
+                    <th>Bukti</th>
+                </tr>
+            </thead>
 
-            </table>
-        </div>
+            <tbody>
+                @foreach($data as $item)
+                <tr>
+                    <td>{{ $item->created_at->format('d M Y') }}</td>
+                    <td>{{ $item->matkul }}</td>
+                    <td>{{ $item->dosen }}</td>
+                    <td>{{ $item->waktu }}</td>
+
+                    <td>
+                        <span class="badge 
+                            {{ $item->status == 'hadir' ? 'badge-hadir' : '' }}
+                            {{ $item->status == 'izin' ? 'badge-izin' : '' }}
+                            {{ $item->status == 'alpha' ? 'badge-alpha' : '' }}">
+                            {{ ucfirst($item->status) }}
+                        </span>
+                    </td>
+
+                    <td>
+                        @if($item->bukti)
+                            <img src="{{ asset('storage/' . $item->bukti) }}" class="bukti-img">
+                        @else
+                            -
+                        @endif
+                    </td>
+
+                </tr>
+                @endforeach
+            </tbody>
+
+        </table>
+
     </div>
 
 </div>
 
+<!-- CHART SCRIPT -->
 <script>
 const canvas = document.getElementById('chart');
 
@@ -194,24 +227,20 @@ if (canvas) {
     const ctx = canvas.getContext('2d');
 
     new Chart(ctx, {
-    type: 'pie',
-    data: {
-        labels: ['Hadir', 'Izin', 'Alpha'],
-        datasets: [{
-            data: @json(!empty($chart) ? array_values($chart) : [0,0,0]),
-            backgroundColor: [
-                '#10b981',
-                '#f59e0b',
-                '#ef4444'
-            ]
-        }]
-    },
-    options: {
-        responsive: true,
-        maintainAspectRatio: true
-    }
-});
+        type: 'pie',
+        data: {
+            labels: ['Hadir', 'Izin', 'Alpha'],
+            datasets: [{
+                data: @json(!empty($chart) ? array_values($chart) : [0,0,0]),
+                backgroundColor: ['#10b981','#f59e0b','#ef4444']
+            }]
+        },
+        options: {
+            responsive: true
+        }
+    });
 }
 </script>
+
 </body>
 </html>

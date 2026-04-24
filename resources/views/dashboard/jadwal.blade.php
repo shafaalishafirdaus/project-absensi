@@ -4,177 +4,139 @@
     <meta charset="UTF-8">
     <title>Jadwal Kuliah</title>
 
-    <!-- Bootstrap -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-
-    <!-- Icon -->
+    <link rel="stylesheet" href="../css/style.css">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
 
-     <style>
+    <style>
         body {
+            margin: 0;
+            
+            background: #f4f6fb;
             overflow-x: hidden;
         }
 
-        /* SIDEBAR */
-        .sidebar {
-            width: 250px;
-            height: 100vh;
-            background: linear-gradient(180deg, #0d6efd, #0a58ca);
-            color: white;
-            position: fixed;
-        }
-
-        .sidebar-header {
-            padding: 20px;
-            font-size: 20px;
-            font-weight: bold;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-
-        .sidebar-nav ul {
-            list-style: none;
-            padding: 0;
-        }
-
-        .sidebar-nav li {
-            margin: 5px 0;
-        }
-
-        .sidebar-nav a {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            padding: 12px 20px;
-            color: white;
-            text-decoration: none;
-            transition: 0.3s;
-        }
-
-        .sidebar-nav a:hover,
-        .sidebar-nav .active a {
-            background: rgba(255,255,255,0.2);
-            border-radius: 8px;
-        }
-
-        .sidebar-footer {
-            position: absolute;
-            bottom: 20px;
-            width: 100%;
-            padding: 0 20px;
-        }
-
-        .logout-btn {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            color: white;
-            text-decoration: none;
-        }
-
-        /* CONTENT */
         .main-content {
             margin-left: 250px;
             padding: 30px;
         }
 
+        h3 {
+            font-size: 22px;
+            margin-bottom: 20px;
+        }
+
+        /* GRID */
+        .schedule-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+        }
+
+        /* CARD */
         .card {
-            border: none;
+            background: white;
             border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+        }
+
+        .card-header {
+            padding: 12px 15px;
+            font-weight: bold;
+            color: white;
         }
 
         .card-body {
-            padding: 30px;
+            padding: 15px;
         }
 
-        #reader {
-            border-radius: 12px;
-            overflow: hidden;
+        .card-body p {
+            margin: 10px 0;
+            font-size: 14px;
+        }
+
+        /* HEADER COLORS */
+        .bg-primary { background: #3b82f6; }
+        .bg-success { background: #10b981; }
+        .bg-warning { background: #f59e0b; color: black; }
+        .bg-info { background: #06b6d4; }
+        .bg-danger { background: #ef4444; }
+
+        /* RESPONSIVE */
+        @media (max-width: 992px) {
+            .schedule-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 600px) {
+            .schedule-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .main-content {
+                margin-left: 0;
+                padding: 15px;
+            }
         }
     </style>
 </head>
 
-<body class="bg-light">
+<body>
 
-{{-- Sidebar --}}
 @include('components.sidebar')
 
 <div class="main-content">
 
-    <h3 class="mb-4 fw-bold">
+    <h3>
         <i class="fas fa-calendar-alt"></i> Jadwal Kuliah
     </h3>
 
-    <div class="container-fluid">
+    <div class="schedule-grid">
 
-        <div class="row g-4">
-
-            <!-- Senin -->
-            <div class="col-md-4">
-                <div class="card shadow schedule-card">
-                    <div class="card-header bg-primary text-white">
-                        Senin
-                    </div>
-                    <div class="card-body">
-                        <p><strong>08:00 - 10:30</strong><br>Pemrograman Web</p>
-                        <p><strong>10:30 - 12:00</strong><br>Struktur Data</p>
-                        <p><strong>13:00 - 15:30</strong><br>Basis Data</p>
-                    </div>
-                </div>
+        <!-- SENIN -->
+        <div class="card">
+            <div class="card-header bg-primary">Senin</div>
+            <div class="card-body">
+                <p><strong>08:00 - 10:30</strong><br>Pemrograman Web</p>
+                <p><strong>10:30 - 12:00</strong><br>Struktur Data</p>
+                <p><strong>13:00 - 15:30</strong><br>Basis Data</p>
             </div>
+        </div>
 
-            <!-- Selasa -->
-            <div class="col-md-4">
-                <div class="card shadow schedule-card">
-                    <div class="card-header bg-success text-white">
-                        Selasa
-                    </div>
-                    <div class="card-body">
-                        <p><strong>08:00 - 10:30</strong><br>Jaringan Komputer</p>
-                        <p><strong>13:00 - 15:00</strong><br>Kecerdasan Buatan</p>
-                    </div>
-                </div>
+        <!-- SELASA -->
+        <div class="card">
+            <div class="card-header bg-success">Selasa</div>
+            <div class="card-body">
+                <p><strong>08:00 - 10:30</strong><br>Jaringan Komputer</p>
+                <p><strong>13:00 - 15:00</strong><br>Kecerdasan Buatan</p>
             </div>
+        </div>
 
-            <!-- Rabu -->
-            <div class="col-md-4">
-                <div class="card shadow schedule-card">
-                    <div class="card-header bg-warning text-dark">
-                        Rabu
-                    </div>
-                    <div class="card-body">
-                        <p><strong>08:00 - 10:30</strong><br>Pemrograman Web</p>
-                        <p><strong>10:30 - 12:00</strong><br>Basis Data</p>
-                    </div>
-                </div>
+        <!-- RABU -->
+        <div class="card">
+            <div class="card-header bg-warning">Rabu</div>
+            <div class="card-body">
+                <p><strong>08:00 - 10:30</strong><br>Pemrograman Web</p>
+                <p><strong>10:30 - 12:00</strong><br>Basis Data</p>
             </div>
+        </div>
 
-            <!-- Kamis -->
-            <div class="col-md-4">
-                <div class="card shadow schedule-card">
-                    <div class="card-header bg-info text-white">
-                        Kamis
-                    </div>
-                    <div class="card-body">
-                        <p><strong>08:00 - 10:30</strong><br>Struktur Data</p>
-                        <p><strong>13:00 - 15:30</strong><br>Jaringan Komputer</p>
-                    </div>
-                </div>
+        <!-- KAMIS -->
+        <div class="card">
+            <div class="card-header bg-info">Kamis</div>
+            <div class="card-body">
+                <p><strong>08:00 - 10:30</strong><br>Struktur Data</p>
+                <p><strong>13:00 - 15:30</strong><br>Jaringan Komputer</p>
             </div>
+        </div>
 
-            <!-- Jumat -->
-            <div class="col-md-4">
-                <div class="card shadow schedule-card">
-                    <div class="card-header bg-danger text-white">
-                        Jumat
-                    </div>
-                    <div class="card-body">
-                        <p><strong>08:00 - 10:00</strong><br>Kecerdasan Buatan</p>
-                    </div>
-                </div>
+        <!-- JUMAT -->
+        <div class="card">
+            <div class="card-header bg-danger">Jumat</div>
+            <div class="card-body">
+                <p><strong>08:00 - 10:00</strong><br>Kecerdasan Buatan</p>
             </div>
-
         </div>
 
     </div>
