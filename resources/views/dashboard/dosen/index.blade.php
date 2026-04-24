@@ -9,7 +9,8 @@
 </head>
 <body class="dashboard-page">
     <!-- Sidebar -->
-    <aside class="sidebar" id="sidebar">
+    @include('components.sidebar')
+    {{-- <aside class="sidebar" id="sidebar">
         <div class="sidebar-header">
             <i class="fas fa-university"></i>
             <span>UniAttend</span>
@@ -67,7 +68,7 @@
                 <span>Logout</span>
             </a>
         </div>
-    </aside>
+    </aside> --}}
 
     <!-- Main Content -->
     <main class="main-content">

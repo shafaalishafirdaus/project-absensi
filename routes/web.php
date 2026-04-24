@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AttendanceController;
+use App\Http\Controllers\AuthController;
 use App\Http\Controllers\IzinController;
 
 Route::get('/', function () {
@@ -12,19 +13,19 @@ Route::get('/login', function () {
     return view('login');
 });
 
-// Dashboard masing-masing
-//Route::get('/mahasiswa', function () {
-   // return view('dashboard.mahasiswa');
-//});
+Route::post('/login-proses', [AuthController::class, 'loginProses']);
 
-Route::get('/mahasiswa', [AttendanceController::class, 'index']);
+// Route::get('/mahasiswa', [AttendanceController::class, 'index']);
 
+Route::get('/mahasiswa', function () {
+    return view('dashboard.mahasiswa.index');
+});
 Route::get('/dosen', function () {
-    return view('dashboard.dosen');
+    return view('dashboard.dosen.index');
 });
 
 Route::get('/admin', function () {
-    return view('dashboard.admin');
+    return view('dashboard.admin.index');
 });
 Route::get('/scan-absensi', function () {
     return view('dashboard.scan');

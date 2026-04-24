@@ -8,42 +8,40 @@ use Illuminate\Support\Facades\Session;
 
 class AuthController extends Controller
 {
-    public function form()
+    public function loginProses(Request $request)
     {
-        return view('login');
+    $email = $request->email;
+    $password = $request->password;
+
+    // Cari user yang email dan passwordnya cocok
+    $user = DB::table('users')
+                ->where('email', $email)
+                ->where('password', $password)
+                ->first();
+
+    if ($user) {
+        // Simpan session dasar
+        Session::put('user_id', $user->id);
+        Session::put('role', $user->role);
+        Session::put('name', $user->name);
+
+        // Redirect otomatis berdasarkan role yang ada di database
+        if ($user->role == 'admin') {
+            return redirect('/admin');
+        } elseif ($user->role == 'dosen') {
+            return redirect('/dosen');
+        } elseif ($user->role == 'mahasiswa') {
+            return redirect('/mahasiswa');
+        }
     }
 
-    public function login(Request $request)
-    {
-        $email = $request->email;
-        $password = $request->password;
-
-        // cek langsung (tanpa hash)
-        $user = DB::table('users')
-            ->where('email', $email)
-            ->where('password', $password)
-            ->first();
-
-        if ($user) {
-            Session::put('user', $user);
-            return redirect('/home');
-        }
-
-        return "Login gagal";
-    }
-
-    public function home()
-    {
-        if (!Session::has('user')) {
-            return redirect('/login');
-        }
-
-        return "Halo, " . Session::get('user')->name;
+    // Jika tidak ketemu
+    return back()->with('error', 'Email atau Password salah!');
     }
 
     public function logout()
     {
-        Session::forget('user');
+        Session::flush();
         return redirect('/login');
     }
 }
