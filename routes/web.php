@@ -50,3 +50,5 @@ Route::get('/pengajuan-izin', function () {
 Route::get('/riwayat-kehadiran', [AttendanceController::class, 'riwayat']);
 Route::get('/pengajuan-izin', [IzinController::class, 'create'])->name('izin.create');
 Route::post('/pengajuan-izin', [IzinController::class, 'store'])->name('izin.store');
+Route::get('/riwayat-izin', [IzinController::class, 'index'])->name('izin.index');
+Route::get('/riwayat-izin', [IzinController::class, 'index'])->name('riwayat.izin');

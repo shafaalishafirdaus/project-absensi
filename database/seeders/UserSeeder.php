@@ -35,6 +35,13 @@ class UserSeeder extends Seeder
                 'role'     => 'mahasiswa',
                 'created_at' => now(),
             ],
+            [
+                'name'     => 'Regita',
+                'email'    => 'regita@gmail.com',
+                'password' => '123', // Tanpa bcrypt
+                'role'     => 'mahasiswa',
+                'created_at' => now(),
+            ],
         ]);
     }
 }

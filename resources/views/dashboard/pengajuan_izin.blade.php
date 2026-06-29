@@ -113,7 +113,14 @@
     <div class="card form-card">
         <div class="card-body">
 
-            <form action="{{ route('izin.store') }}" method="POST">
+        <!-- NOTIFIKASI -->
+@if(session('success'))
+    <div style="background:#d1fae5; padding:10px; border-radius:8px; margin-bottom:15px;">
+        {{ session('success') }}
+    </div>
+@endif
+
+            <form action="{{ route('izin.store') }}" method="POST" enctype="multipart/form-data">
                 @csrf
 
                 <div class="mb-3">
@@ -140,16 +147,23 @@
                     </select>
                 </div>
 
-                <div class="mb-3">
-                    <label class="form-label">Alasan</label>
-                    <textarea name="alasan" class="form-control" rows="4" placeholder="Tuliskan alasan..." required></textarea>
-                </div>
+             <!-- ALASAN (WAJIB ADA) -->
+    <div class="mb-3">
+        <label class="form-label">Alasan</label>
+        <textarea name="alasan" class="form-control" rows="4" required></textarea>
+    </div>
 
-                <button type="submit" class="btn btn-primary">
-                    <i class="fas fa-paper-plane"></i> Kirim Pengajuan
-                </button>
+    <!-- UPLOAD FOTO -->
+    <div class="mb-3">
+        <label class="form-label">Upload Dokumen Pendukung</label>
+        <input type="file" name="dokumen" class="form-control" accept="image/*">
+    </div>
 
-            </form>
+    <button type="submit" class="btn btn-primary">
+        <i class="fas fa-paper-plane"></i> Kirim Pengajuan
+    </button>
+
+</form>
 
         </div>
     </div>

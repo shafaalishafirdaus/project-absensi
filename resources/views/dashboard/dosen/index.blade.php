@@ -85,7 +85,7 @@
                 <div class="user-menu">
                     <img src="https://ui-avatars.com/api/?name=Dr+Budi&background=10b981&color=fff" alt="Dosen">
                     <div class="user-info">
-                        <span class="user-name">Dr. Budi Santoso</span>
+                        <span class="user-name"> Dr. Tuti </span>
                         <span class="user-role">Dosen</span>
                     </div>
                 </div>
@@ -151,7 +151,8 @@
                             <span class="duration">2.5 jam</span>
                         </div>
                         <div class="schedule-info">
-                            <h4>Pemrograman Web</h4>
+                            <h4>SIM UNW003</h4>
+                            <h4>Kurikulum OBE2025</h4>
                             <p><i class="fas fa-map-marker-alt"></i> Ruang Lab 3</p>
                             <p><i class="fas fa-users"></i> 35 Mahasiswa</p>
                         </div>
@@ -183,7 +184,7 @@
                             <span class="duration">2 jam</span>
                         </div>
                         <div class="schedule-info">
-                            <h4>Algoritma Lanjutan</h4>
+                            <h4>Pengendalian Sistem Informasi</h4>                    
                             <p><i class="fas fa-map-marker-alt"></i> Ruang 305</p>
                             <p><i class="fas fa-users"></i> 38 Mahasiswa</p>
                         </div>

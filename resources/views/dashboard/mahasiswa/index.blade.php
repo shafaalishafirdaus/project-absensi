@@ -27,7 +27,7 @@
                 <div class="user-menu">
                     <img src="https://ui-avatars.com/api/?name=Shafa+Alisha+Firdaus&background=f59e0b&color=fff" alt="Mahasiswa">
                     <div class="user-info">
-                        <span class="user-name">Shafa Alisha Firdaus</span>
+                        <span class="user-name">Nama mahasiswa</span>
                         <span class="user-role">2021001001</span>
                     </div>
                 </div>
@@ -39,7 +39,7 @@
             <!-- Welcome Section -->
             <div class="welcome-section">
                 <div class="welcome-text">
-                    <h1>Halo, Shafa! 👋</h1>
+                    <h1>Halo, mahasiswa! 👋</h1>
                     <p>Senin, 26 April 2026 • Semester 4</p>
                 </div>
                 <a href="/scan-absensi" class="btn btn-primary btn-lg">
