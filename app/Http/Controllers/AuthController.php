@@ -31,7 +31,7 @@ class AuthController extends Controller
         } elseif ($user->role == 'dosen') {
             return redirect('/dosen');
         } elseif ($user->role == 'mahasiswa') {
-            return redirect('/mahasiswa');
+            return redirect('/beranda-mahasiswa');
         }
     }
 
