@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Profil Mahasiswa - UniAttend</title>
+    <title>Form Izin</title>
 
     <link rel="stylesheet" href="../css/style.css">
     <!-- Font Awesome -->
@@ -15,10 +15,15 @@
             background: #f4f6fb;
         }
 
+        h3 {
+            font-size: 22px;
+            margin: 20px;
+        }
+
         /* SIDEBAR */
         .main-content {
             margin-left: 250px;
-            padding: 30px;
+            padding: 25px;
         }
 
         /* PAGE TITLE */

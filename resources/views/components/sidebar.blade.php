@@ -7,21 +7,30 @@
     <nav class="sidebar-nav">
         <ul>
             @if(Session::get('role') == 'mahasiswa')
-                <li class="{{ request()->is('mahasiswa') ? 'active' : '' }}">
-                    <a href="/mahasiswa"><i class="fas fa-home"></i>Beranda Mahasiswa</a>
+                <li class="{{ request()->is('beranda-mahasiswa') ? 'active' : '' }}">
+                    <a href="/beranda-mahasiswa"><i class="fas fa-home"></i>Beranda Mahasiswa</a>
                 </li>
                 <li class="{{ request()->is('scan-absensi') ? 'active' : '' }}">
                     <a href="/scan-absensi"><i class="fas fa-qrcode"></i>Scan Absensi</a>
                 </li>
-                <li class="{{ request()->is('riwayat-kehadiran') ? 'active' : '' }}">
-                    <a href="/riwayat-kehadiran"><i class="fas fa-user-check"></i>Riwayat Kehadiran</a>
+                <li class="{{ request()->is('jam-mata-kuliah') ? 'active' : '' }}">
+                    <a href="/jam-mata-kuliah"><i class="fas fa-qrcode"></i>Jam Mata Kuliah</a>
                 </li>
-                <li class="{{ request()->is('pengajuan-izin') ? 'active' : '' }}">
-                    <a href="/pengajuan-izin"><i class="fas fa-envelope-open-text"></i>Form Izin</a>
+                <li class="{{ request()->is('kalender-akademik') ? 'active' : '' }}">
+                    <a href="/kalender-akademik"><i class="fas fa-qrcode"></i>Kalender Akademik</a>
+                </li>
+                <li class="{{ request()->is('riwayat-rekap-kehadiran') ? 'active' : '' }}">
+                    <a href="/riwayat-rekap-kehadiran"><i class="fas fa-user-check"></i>Riwayat & Rekap Kehadiran</a>
+                </li>
+                <li class="{{ request()->is('form-izin') ? 'active' : '' }}">
+                    <a href="/form-izin"><i class="fas fa-envelope-open-text"></i>Form Izin</a>
+                </li>
+                <li class="{{ request()->is('dokumen-pendukung') ? 'active' : '' }}">
+                    <a href="/dokumen-pendukung"><i class="fas fa-qrcode"></i>Dokumen Pendukung</a>
                 </li>
             @endif
 
-            @if(Session::get('role') == 'dosen')
+            {{-- @if(Session::get('role') == 'dosen')
                 <li class="{{ request()->is('dashboard-dosen') ? 'active' : '' }}">
                     <a href="/dashboard-dosen"><i class="fas fa-chalkboard-teacher"></i>Panel Dosen</a>
                 </li>
@@ -49,7 +58,7 @@
                 <li class="{{ request()->is('laporan-sistem') ? 'active' : '' }}">
                     <a href="/laporan-sistem"><i class="fas fa-chart-line"></i>Laporan Global</a>
                 </li>
-            @endif
+            @endif --}}
 
             <hr style="margin: 10px 0; border: 0; border-top: 1px solid #eee;">
             
